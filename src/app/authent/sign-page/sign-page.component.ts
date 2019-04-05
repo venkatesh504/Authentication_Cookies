@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MustMatch} from  './../_helper/customValidator.js'
 
 @Component({
   selector: 'app-sign-page',
@@ -19,13 +20,9 @@ export class SignPageComponent implements OnInit {
       emailId: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: [Validators.required]
-    }
-    , {
+    }, {
         validator: MustMatch('password', 'confirmPassword')
-      }
-      )
-  
-      
+      }); 
   }
   get f() {
     console.log(this.signUp_form.controls);
