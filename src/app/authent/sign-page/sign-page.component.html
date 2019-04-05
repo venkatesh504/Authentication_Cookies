@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 offset-md-3">
+    <div class="col-md-6 offset-md-3">
       <h3 class="text-center">
         SIGN UP HERE
       </h3>
       <form action="" [formGroup]="signUp_form" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="fName">First Name</label>
-          <input type="text" formControlName="firstName" [(ngModel)]="signUp.firstName" class="form-control"
+          <input type="text" formControlName="firstName" [(ngModel)]="signUp.FirstName" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
           <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
             <div *ngIf="f.firstName.errors.required">First Name is required</div>
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="fName">Last Name</label>
-            <input type="text" formControlName="lastName" [(ngModel)]="signUp.lastName" class="form-control"
+            <input type="text" formControlName="lastName" [(ngModel)]="signUp.LastName" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
             <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
               <div *ngIf="f.lastName.errors.required">last Name is required</div>
@@ -23,7 +23,7 @@
           </div>
           <div class="form-group">
               <label for="fName">Email</label>
-              <input type="text" formControlName="emailId" [(ngModel)]="signUp.emailId" class="form-control"
+              <input type="text" formControlName="emailId" [(ngModel)]="signUp.EmailId" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }">
               <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                   <div *ngIf="f.emailId.errors.required">Email is required</div>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" formControlName="password"  [(ngModel)]="signUp.password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <input type="password" formControlName="password"  [(ngModel)]="signUp.Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password is required</div>
                     <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-               <input type="text" formControlName="confirmPassword"  [(ngModel)]="signUp.confirmPassword " class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+               <input type="password" formControlName="confirmPassword"  [(ngModel)]="signUp.ConfirmPassword " class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
                 <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                     <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>

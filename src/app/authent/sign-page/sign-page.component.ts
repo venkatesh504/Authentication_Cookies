@@ -25,21 +25,20 @@ export class SignPageComponent implements OnInit {
       }); 
   }
   get f() {
-    console.log(this.signUp_form.controls);
     return this.signUp_form.controls;
    
     
   }
   onSubmit() {
     this.submitted = true;
-    console.log(this.submitted);
     // stop here if form is invalid
     if (this.signUp_form.invalid) {
       console.log(this.signUp_form.invalid);
       return;
     }
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signUp_form.value))
-    console.log(this.signUp_form.value);
+    console.log( this.signUp);
+    
   }
 }
 

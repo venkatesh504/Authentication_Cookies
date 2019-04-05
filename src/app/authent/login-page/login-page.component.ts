@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 @Component({
   selector: 'app-login-page',
@@ -7,17 +8,24 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   angForm: FormGroup;
+  submitted = false;
   Login:any ={};
-  constructor(private fb: FormBuilder) { 
-    this.createForm();
+  constructor(private formBuilder: FormBuilder,private router: Router) { 
   }
-  createForm(){
-    this.angForm = this.fb.group({
-      name: ['', Validators.required ]
-
-    })
-  }
+  get f() { return  this.angForm.controls; }
   ngOnInit() {
+    this.angForm = this.formBuilder.group({
+      log_email: ['',[Validators.email,Validators.required ] ],
+      log_password :['',[Validators.required, Validators.minLength(6)]]
+    });
   }
-
+  onSubmit(){
+    this.submitted = true;
+    if (this.angForm .invalid) {
+      return;
+  }
+  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.angForm.value))
+  this.router.navigate(['']);
+  
+  }
 }
