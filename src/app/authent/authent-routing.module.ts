@@ -8,7 +8,7 @@ import { SignPageComponent } from './sign-page/sign-page.component';
 const routes: Routes = [
   {path:'',component:LoginPageComponent},
   {path:'home_page',component:AuthentComponent},
-  {path:'signUp_page',component:SignPageComponent}
+  {path:'signUp_page',component:SignPageComponent},
 
 ];
 

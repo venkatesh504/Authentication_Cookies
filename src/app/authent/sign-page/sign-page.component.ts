@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch} from  './../_helper/customValidator.js'
+import { MustMatch} from  './../_helper/customValidator.js';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-sign-page',
@@ -8,10 +10,13 @@ import { MustMatch} from  './../_helper/customValidator.js'
   styleUrls: ['./sign-page.component.css']
 })
 export class SignPageComponent implements OnInit {
+  cookieValue = 'UNKNOWN';
   signUp = {};
+  sign_emailid :any;
+  sign_password:any;
   signUp_form: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder ,  private cookieService: CookieService) { }
 
   ngOnInit() {
     this.signUp_form = this.formBuilder.group({
@@ -23,6 +28,7 @@ export class SignPageComponent implements OnInit {
     }, {
         validator: MustMatch('password', 'confirmPassword')
       }); 
+     
   }
   get f() {
     return this.signUp_form.controls;
@@ -38,7 +44,8 @@ export class SignPageComponent implements OnInit {
     }
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signUp_form.value))
     console.log( this.signUp);
-    
+    this.cookieService.set( 'signup_email', this.sign_emailid);
+    this.cookieService.set( 'signup_password' , this.sign_password);
   }
 }
 
